@@ -1,4 +1,4 @@
-package iuri.android.calculadora;
+package iuri.android.calculadora.unitario;
 
 import junit.framework.TestCase;
 
@@ -14,7 +14,7 @@ public class TestCalcularOperacao extends TestCase {
         CalcularOperacao calcularOperacao = new CalcularOperacao();
         String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_+_7");
 
-        assertEquals(expressaoResultante,"15.0");
+        assertEquals("15.0", expressaoResultante);
 
     }
 
@@ -23,7 +23,7 @@ public class TestCalcularOperacao extends TestCase {
         CalcularOperacao calcularOperacao = new CalcularOperacao();
         String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_-_7");
 
-        assertEquals(expressaoResultante,"1.0");
+        assertEquals("1.0", expressaoResultante);
 
     }
 
@@ -32,7 +32,7 @@ public class TestCalcularOperacao extends TestCase {
         CalcularOperacao calcularOperacao = new CalcularOperacao();
         String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("2_-_7");
 
-        assertEquals(expressaoResultante,"-5.0");
+        assertEquals("-5.0", expressaoResultante);
 
     }
 
@@ -41,7 +41,7 @@ public class TestCalcularOperacao extends TestCase {
         CalcularOperacao calcularOperacao = new CalcularOperacao();
         String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_*_7");
 
-        assertEquals(expressaoResultante,"56.0");
+        assertEquals("56.0", expressaoResultante);
 
     }
 
@@ -50,7 +50,7 @@ public class TestCalcularOperacao extends TestCase {
         CalcularOperacao calcularOperacao = new CalcularOperacao();
         String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_/_2");
 
-        assertEquals(expressaoResultante,"4.0");
+        assertEquals("4.0", expressaoResultante);
 
     }
 
@@ -59,7 +59,7 @@ public class TestCalcularOperacao extends TestCase {
         CalcularOperacao calcularOperacao = new CalcularOperacao();
         String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_/_0");
 
-        assertEquals(expressaoResultante,"Infinity");
+        assertEquals("Infinity", expressaoResultante);
 
     }
 
@@ -68,8 +68,16 @@ public class TestCalcularOperacao extends TestCase {
         CalcularOperacao calcularOperacao = new CalcularOperacao();
         String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_/_");
 
-        assertEquals(expressaoResultante,"8_/_");
+        assertEquals("8_/_",expressaoResultante);
 
+    }
+
+    public void testEfetuarCalculoRespeitandoOrdemDeOperacao(){
+
+        CalcularOperacao calcularOperacao = new CalcularOperacao();
+        String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_+_2_*_6");
+
+        assertEquals("20.0", expressaoResultante);
 
     }
 

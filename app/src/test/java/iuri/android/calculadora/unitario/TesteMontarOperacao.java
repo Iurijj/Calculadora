@@ -1,4 +1,4 @@
-package iuri.android.calculadora;
+package iuri.android.calculadora.unitario;
 
 import junit.framework.TestCase;
 
@@ -28,7 +28,7 @@ public class TesteMontarOperacao extends TestCase {
         instrucaoInicial = montarOperacao.tratarInstrucao("5");
         instrucaoInicial = montarOperacao.tratarInstrucao("5");
 
-        assertEquals(instrucaoInicial, "255");
+        assertEquals("255", instrucaoInicial);
 
     }
 
@@ -37,7 +37,7 @@ public class TesteMontarOperacao extends TestCase {
         MontarOperacao montarOperacao = new MontarOperacao("2_/_2_*_");
         String expressaoResultante = montarOperacao.tratarInstrucao("+");
 
-        assertEquals(expressaoResultante, "2_/_2_+_");
+        assertEquals("2_/_2_+_", expressaoResultante);
 
     }
 
@@ -46,7 +46,7 @@ public class TesteMontarOperacao extends TestCase {
         MontarOperacao montarOperacao = new MontarOperacao("23_*_5_/_");
         String expressaoResultante = montarOperacao.tratarInstrucao("-");
 
-        assertEquals(expressaoResultante, "23_*_5_/_-");
+        assertEquals("23_*_5_/_-", expressaoResultante);
 
     }
 
@@ -58,7 +58,7 @@ public class TesteMontarOperacao extends TestCase {
         expressaoResultante = montarOperacao.limparUltOperacao();
         expressaoResultante = montarOperacao.limparUltOperacao();
 
-        assertEquals(expressaoResultante, "0");
+        assertEquals("0", expressaoResultante);
 
     }
 
@@ -67,7 +67,7 @@ public class TesteMontarOperacao extends TestCase {
         MontarOperacao montarOperacao = new MontarOperacao("0");
         String expressaoResultante = montarOperacao.tratarInstrucao("2");
 
-        assertEquals(expressaoResultante, "2");
+        assertEquals("2", expressaoResultante);
 
     }
 
@@ -82,7 +82,7 @@ public class TesteMontarOperacao extends TestCase {
 
         String expressaoResultante = montarOperacao.limparUltOperacao();
 
-        assertEquals(expressaoResultante, "0");
+        assertEquals("0", expressaoResultante);
 
     }
 
@@ -97,7 +97,7 @@ public class TesteMontarOperacao extends TestCase {
 
         String expressaoResultante = montarOperacao.tratarInstrucao("9");
 
-        assertEquals(expressaoResultante, "9");
+        assertEquals("9", expressaoResultante);
 
     }
 
@@ -109,7 +109,7 @@ public class TesteMontarOperacao extends TestCase {
         expressaoResultante = montarOperacao.tratarInstrucao(".");
         expressaoResultante = montarOperacao.tratarInstrucao(".");
 
-        assertEquals(expressaoResultante, "2_/_5.");
+        assertEquals("2_/_5.", expressaoResultante);
 
     }
 
@@ -118,7 +118,7 @@ public class TesteMontarOperacao extends TestCase {
         MontarOperacao montarOperacao = new MontarOperacao("2_/_-");
         String expressaoResultante = montarOperacao.tratarInstrucao("*");
 
-        assertEquals(expressaoResultante, "2_/_-");
+        assertEquals("2_/_-", expressaoResultante);
 
     }
 
@@ -127,7 +127,7 @@ public class TesteMontarOperacao extends TestCase {
         MontarOperacao montarOperacao = new MontarOperacao("2_/_-");
         String expressaoResultante = montarOperacao.tratarInstrucao("8");
 
-        assertEquals(expressaoResultante, "2_/_-8");
+        assertEquals("2_/_-8", expressaoResultante);
 
     }
 
