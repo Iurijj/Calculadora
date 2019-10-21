@@ -9,52 +9,52 @@ import iuri.android.calculadora.service.MontarOperacao;
 
 public class TestCalcularOperacao extends TestCase {
 
-    public void testEfetuarCalculoOperacaoSoma(){
+    public void testeSomarDoisValores(){
 
         CalcularOperacao calcularOperacao = new CalcularOperacao();
-        String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_+_7");
+        String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_+_8");
 
-        assertEquals("15.0", expressaoResultante);
+        assertEquals("16.0", expressaoResultante);
 
     }
 
-    public void testEfetuarCalculoOperacaoSubtracao(){
+    public void testeSubtrairDoisValores(){
 
         CalcularOperacao calcularOperacao = new CalcularOperacao();
-        String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_-_7");
+        String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_-_8");
+
+        assertEquals("0.0", expressaoResultante);
+
+    }
+
+    public void testeSubtrairDoisValoresResultandoValorNegativo(){
+
+        CalcularOperacao calcularOperacao = new CalcularOperacao();
+        String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_-_9");
+
+        assertEquals("-1.0", expressaoResultante);
+
+    }
+
+    public void testeMultiplicarDoisValores(){
+
+        CalcularOperacao calcularOperacao = new CalcularOperacao();
+        String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_*_8");
+
+        assertEquals("64.0", expressaoResultante);
+
+    }
+
+    public void testeDividirDoisValores(){
+
+        CalcularOperacao calcularOperacao = new CalcularOperacao();
+        String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_/_8");
 
         assertEquals("1.0", expressaoResultante);
 
     }
 
-    public void testEfetuarCalculoOperacaoSubtracaoResultadoNegativo(){
-
-        CalcularOperacao calcularOperacao = new CalcularOperacao();
-        String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("2_-_7");
-
-        assertEquals("-5.0", expressaoResultante);
-
-    }
-
-    public void testEfetuarCalculoOperacaoMultiplicacao(){
-
-        CalcularOperacao calcularOperacao = new CalcularOperacao();
-        String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_*_7");
-
-        assertEquals("56.0", expressaoResultante);
-
-    }
-
-    public void testEfetuarCalculoOperacaoDivisao(){
-
-        CalcularOperacao calcularOperacao = new CalcularOperacao();
-        String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_/_2");
-
-        assertEquals("4.0", expressaoResultante);
-
-    }
-
-    public void testEfetuarCalculoOperacaoDivisaoPorZero(){
+    public void testeDividirPorZero(){
 
         CalcularOperacao calcularOperacao = new CalcularOperacao();
         String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_/_0");
@@ -63,16 +63,16 @@ public class TestCalcularOperacao extends TestCase {
 
     }
 
-    public void testEfetuarCalculoOperacaoExpressaoIncomp(){
+    public void testeCalcularComOperacaoIncompleta(){
 
         CalcularOperacao calcularOperacao = new CalcularOperacao();
-        String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_/_");
+        String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("5_+_");
 
-        assertEquals("8_/_",expressaoResultante);
+        assertEquals("5_+_",expressaoResultante);
 
     }
 
-    public void testEfetuarCalculoRespeitandoOrdemDeOperacao(){
+    public void testeCalcularRespeitandoOrdemMatematica(){
 
         CalcularOperacao calcularOperacao = new CalcularOperacao();
         String expressaoResultante = calcularOperacao.efetuarCalculoOperacao("8_+_2_*_6");

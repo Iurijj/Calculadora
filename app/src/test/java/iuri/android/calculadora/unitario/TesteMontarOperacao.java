@@ -9,50 +9,50 @@ import iuri.android.calculadora.service.MontarOperacao;
 
 public class TesteMontarOperacao extends TestCase {
 
-    public void testTratarInstrucaoLimpar(){
+    public void testeLimparUltimoValor(){
 
-        MontarOperacao montarOperacao = new MontarOperacao("2_+_5");
+        MontarOperacao montarOperacao = new MontarOperacao("3_+_5");
         String expressaoResutante = montarOperacao.limparUltOperacao();
 
-        assertEquals(expressaoResutante, "2_+_");
+        assertEquals(expressaoResutante, "3_+_");
 
     }
 
-    public void testTratarInstrucaoConcatenacao(){
+    public void testeConcatenarValores(){
 
         String instrucaoInicial = "0";
 
         MontarOperacao montarOperacao = new MontarOperacao(instrucaoInicial);
 
-        instrucaoInicial = montarOperacao.tratarInstrucao("2");
-        instrucaoInicial = montarOperacao.tratarInstrucao("5");
-        instrucaoInicial = montarOperacao.tratarInstrucao("5");
+        instrucaoInicial = montarOperacao.tratarInstrucao("8");
+        instrucaoInicial = montarOperacao.tratarInstrucao("8");
+        instrucaoInicial = montarOperacao.tratarInstrucao("0");
 
-        assertEquals("255", instrucaoInicial);
+        assertEquals("880", instrucaoInicial);
 
     }
 
-    public void testTratarInstrucaoTrocaOperacao(){
+    public void testeTrocarOperador(){
 
-        MontarOperacao montarOperacao = new MontarOperacao("2_/_2_*_");
+        MontarOperacao montarOperacao = new MontarOperacao("8_/_");
         String expressaoResultante = montarOperacao.tratarInstrucao("+");
 
-        assertEquals("2_/_2_+_", expressaoResultante);
+        assertEquals("8_+_", expressaoResultante);
 
     }
 
-    public void testTratarInstrucaoAceitaSinalNegativo(){
+    public void testeAceitaSinalNegativo(){
 
-        MontarOperacao montarOperacao = new MontarOperacao("23_*_5_/_");
+        MontarOperacao montarOperacao = new MontarOperacao("8_/_");
         String expressaoResultante = montarOperacao.tratarInstrucao("-");
 
-        assertEquals("23_*_5_/_-", expressaoResultante);
+        assertEquals("8_/_-", expressaoResultante);
 
     }
 
-    public void testTratarInstrucaoLimparTodaExpressoa(){
+    public void testeLimparTodaExpressao(){
 
-        MontarOperacao montarOperacao = new MontarOperacao("2_/_5");
+        MontarOperacao montarOperacao = new MontarOperacao("5_+_8");
 
         String expressaoResultante = montarOperacao.limparUltOperacao();
         expressaoResultante = montarOperacao.limparUltOperacao();
@@ -62,16 +62,16 @@ public class TesteMontarOperacao extends TestCase {
 
     }
 
-    public void testTratarInstrucaoZeroIsSubstituido(){
+    public void testeSubstituirZero(){
 
-        MontarOperacao montarOperacao = new MontarOperacao("0");
-        String expressaoResultante = montarOperacao.tratarInstrucao("2");
+        MontarOperacao montarOperacao = new MontarOperacao("5_+_0");
+        String expressaoResultante = montarOperacao.tratarInstrucao("8");
 
-        assertEquals("2", expressaoResultante);
+        assertEquals("5_+_8", expressaoResultante);
 
     }
 
-    public void testTratarLimparExpressaoInfinito(){
+    public void testeLimparExpressaoInfinito(){
 
         MontarOperacao montarOperacao = new MontarOperacao();
         CalcularOperacao calcularOperacao = new CalcularOperacao();
@@ -86,7 +86,7 @@ public class TesteMontarOperacao extends TestCase {
 
     }
 
-    public void testTratarTrocarExpressaoInfinito(){
+    public void testeSubstituirExpressaoInfinito(){
 
         MontarOperacao montarOperacao = new MontarOperacao();
         CalcularOperacao calcularOperacao = new CalcularOperacao();
@@ -95,39 +95,38 @@ public class TesteMontarOperacao extends TestCase {
 
         montarOperacao.setOperacao(resultadoExpressao);
 
-        String expressaoResultante = montarOperacao.tratarInstrucao("9");
+        String expressaoResultante = montarOperacao.tratarInstrucao("8");
 
-        assertEquals("9", expressaoResultante);
+        assertEquals("8", expressaoResultante);
 
     }
 
-    public void testTratarApenasUmPonto(){
+    public void testeAceitarApenasUmPonto(){
 
-        MontarOperacao montarOperacao = new MontarOperacao("2_/_5");
+        MontarOperacao montarOperacao = new MontarOperacao("8");
 
         String expressaoResultante = montarOperacao.tratarInstrucao(".");
         expressaoResultante = montarOperacao.tratarInstrucao(".");
-        expressaoResultante = montarOperacao.tratarInstrucao(".");
 
-        assertEquals("2_/_5.", expressaoResultante);
+        assertEquals("8.", expressaoResultante);
 
     }
 
-    public void testTratarOperacaoAposSinalNegativoNaoAceitaOperadores(){
+    public void testeNaoAceitarOperadorAposSinalNegativo(){
 
-        MontarOperacao montarOperacao = new MontarOperacao("2_/_-");
+        MontarOperacao montarOperacao = new MontarOperacao("8_/_-");
         String expressaoResultante = montarOperacao.tratarInstrucao("*");
 
-        assertEquals("2_/_-", expressaoResultante);
+        assertEquals("8_/_-", expressaoResultante);
 
     }
 
-    public void testTratarOperacaoAposSinalNegativoAceitaApenasNumeros(){
+    public void testeAceitarValorAposSinalNegativo(){
 
-        MontarOperacao montarOperacao = new MontarOperacao("2_/_-");
+        MontarOperacao montarOperacao = new MontarOperacao("8_/_-");
         String expressaoResultante = montarOperacao.tratarInstrucao("8");
 
-        assertEquals("2_/_-8", expressaoResultante);
+        assertEquals("8_/_-8", expressaoResultante);
 
     }
 
